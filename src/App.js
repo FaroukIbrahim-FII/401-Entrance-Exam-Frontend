@@ -6,6 +6,9 @@ import {
   Switch,
   Route
 } from "react-router-dom";
+import Home from './components/Home';
+import Login from './components/Login';
+import FavFruit from './components/FavFruit';
 import { withAuth0 } from '@auth0/auth0-react';
 
 
@@ -20,10 +23,11 @@ class App extends React.Component {
             <Header />
             <Switch>
               <Route exact path="/">
-                {/* TODO: if the user is logged in, render the `Home` component, if they are not, render the `Login` component */}
+                {isAuthenticated?<Home/>:<Login/>}
               </Route>
               <Route exact path="/favFruit">
                 {/* TODO: if the user is logged in, render the `FavFruit` component, if they are not, render the `Login` component */}
+                {isAuthenticated?<FavFruit/>:<Login/>}
               </Route>
             </Switch>
             <Footer />
